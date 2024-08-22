@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trang chủ</title>
+</head>
+<body>
+    <h1>Chào mừng bạn đã đăng nhập!</h1>
+    
+    {% if user.is_authenticated %}
+        <p>Xin chào, {{ user.username }}!</p>
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Đăng xuất</button>
+        </form>
+    {% else %}
+        <p>Bạn chưa đăng nhập. <a href="{% url 'login' %}">Đăng nhập</a></p>
+    {% endif %}
+</body>
+</html>
